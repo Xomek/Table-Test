@@ -1,0 +1,60 @@
+@import "../../../scss/palette.scss";
+
+.table {
+  font-size: 12px;
+  line-height: 14px;
+  div {
+    height: 17px;
+  }
+  span {
+    &:first-child {
+      width: 32px;
+      text-align: center;
+    }
+    &:last-child {
+      min-width: 68px;
+      text-align: center;
+    }
+  }
+}
+
+.header {
+  div {
+    display: flex;
+  }
+
+  span {
+    padding: 1px 12px;
+    border: 1px solid $blue;
+    border-left: none;
+    &:nth-child(2) {
+      padding-left: 2px;
+      flex: 1;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.footer {
+  font-weight: 300;
+  div {
+    display: flex;
+    border-bottom: 1px solid $skyBlue;
+  }
+  span {
+    overflow: hidden;
+    padding: 1px 12px;
+    border-right: 1px solid $skyBlue;
+    border-left: none;
+    &:nth-child(2) {
+      padding-left: 2px;
+      flex: 1;
+    }
+    &:last-child {
+      font-weight: 400;
+      border-right: none;
+    }
+  }
+}

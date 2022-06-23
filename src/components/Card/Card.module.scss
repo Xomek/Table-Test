@@ -1,2 +1,38 @@
+@import "../../scss/palette.scss";
+
 .card {
+  background-color: $white;
+  max-width: 300px;
+  width: 100%;
+  min-height: 290px;
+  border: 1px solid $blue;
+  border-radius: 2px;
+  color: $darkBlue;
+}
+
+.header {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 6px;
+}
+
+.subTitle {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.data {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: 20px;
 }
