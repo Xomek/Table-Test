@@ -4,11 +4,11 @@ import { randomData } from "../../helpers/randomData";
 
 const Home: FC = () => {
   const card = randomData();
-  console.log(card);
+  console.log(card[0].items[0].items[0]);
 
   return (
     <div>
-      <Card />
+      <Card card={card[0].items[0].items[0]} />
     </div>
   );
 };

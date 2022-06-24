@@ -3,7 +3,7 @@
 .table {
   font-size: 12px;
   line-height: 14px;
-  min-height: 220px;
+  height: 0;
   div {
     height: 17px;
   }
@@ -13,7 +13,7 @@
       text-align: center;
     }
     &:last-child {
-      min-width: 68px;
+      min-width: 72px;
       text-align: center;
     }
   }
@@ -25,6 +25,7 @@
   }
 
   span {
+    position: relative;
     padding: 1px 12px;
     border: 1px solid $blue;
     border-left: none;
@@ -35,7 +36,15 @@
     &:last-child {
       border-right: none;
     }
+    svg {
+      position: absolute;
+      width: 10px;
+      height: 6px;
+      right: 2px;
+      top: 6px;
+    }
   }
+  cursor: pointer;
 }
 
 .footer {

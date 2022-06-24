@@ -37,3 +37,29 @@
   line-height: 16px;
   margin-left: 20px;
 }
+
+.show {
+  animation: open 0.1s ease-in forwards;
+}
+
+.hide {
+  animation: hide 0.1s ease-in forwards;
+}
+
+@keyframes open {
+  0% {
+    min-height: 0px;
+  }
+  100% {
+    min-height: 220px;
+  }
+}
+
+@keyframes hide {
+  0% {
+    min-height: 220px;
+  }
+  100% {
+    min-height: 0px;
+  }
+}

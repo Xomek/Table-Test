@@ -5,5 +5,5 @@ export interface CardInterface {
   subTitle: string;
   dateStart: number;
   dateEnd: number;
-  data: DataInterface;
+  data: DataInterface[];
 }
