@@ -30,7 +30,7 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
 
   useEffect(() => {
     const arr = [...data];
-    for (let i = 0; arr.length !== 12; i++) {
+    for (let i = 0; arr.length < 12; i++) {
       arr.push({ title: "", number: null });
     }
 
