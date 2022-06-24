@@ -1,3 +1,16 @@
 body {
   font-family: "Roboto", sans-serif;
+  background-color: $bgBody;
+  height: 100vh;
+}
+
+.container {
+  max-width: $containerWidth;
+  width: 100%;
+  margin: 0 auto;
+  padding: $containerPadding;
+}
+
+.page {
+  padding: 50px 0;
 }

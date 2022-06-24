@@ -1,15 +1,14 @@
 import { FC } from "react";
-import { Card } from "../../components";
+import { List } from "../../components";
 import { randomData } from "../../helpers/randomData";
 
 const Home: FC = () => {
-  const card = randomData();
-  console.log(card[0].items[0].items[0]);
+  const items: any[] = randomData();
+  console.log(items);
 
   return (
-    <div>
-      <Card card={card[0].items[0].items[0]} />
-      <Card card={card[1].items[1].items[1]} />
+    <div className="page">
+      <List items={items} />
     </div>
   );
 };
