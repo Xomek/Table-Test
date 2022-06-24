@@ -27,7 +27,7 @@ const Actions: FC<ActionsPropsInterface> = ({
   const [isShowClose, setIsShowClose] = useState<boolean>(false);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
-  const [selectValue, setSelectValue] = useState<string>("");
+  const [selectValue, setSelectValue] = useState<string>("Выберите");
   const actionsRef = useRef(null);
 
   useEffect(() => {
@@ -79,6 +79,7 @@ const Actions: FC<ActionsPropsInterface> = ({
             onChange={(e) => hideData(e.target.value)}
             value={selectValue}
           >
+            <option disabled>Выберите</option>
             {data.map((option, index) => (
               <option key={index}>{option.title}</option>
             ))}

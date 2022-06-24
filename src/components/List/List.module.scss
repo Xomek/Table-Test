@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   ul {
     padding-left: 30px;
   }
@@ -27,6 +28,7 @@
   gap: 26px;
   margin-bottom: 26px;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .subList {
@@ -52,6 +54,6 @@
     position: absolute;
     left: 10px;
     border-left: 2px solid $darkGray;
-    height: calc(100% - 132px);
+    height: calc(100% - 131px);
   }
 }

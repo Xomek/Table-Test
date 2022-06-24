@@ -6,19 +6,16 @@ import styles from "./Home.module.scss";
 
 const Home: FC = () => {
   const items: ListInterface[] = useMemo(() => randomData(), []);
-  const [filterItems, setFilterItems] = useState<ListInterface[]>(items);
+  const [data, setData] = useState<ListInterface[]>(items);
 
   return (
     <div className="page">
-      {filterItems.length ? (
-        <List items={filterItems} />
-      ) : (
-        <List items={items} />
-      )}
+      {data.length ? <List items={data} /> : "Нет вариантов"}
+
       <Actions
         className={styles.actions}
         data={items}
-        setFilterItems={setFilterItems}
+        setFilterItems={setData}
       ></Actions>
     </div>
   );
