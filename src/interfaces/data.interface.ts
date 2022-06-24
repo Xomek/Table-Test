@@ -1,4 +1,4 @@
 export interface DataInterface {
   title: string;
-  number: number;
+  number: number | null;
 }

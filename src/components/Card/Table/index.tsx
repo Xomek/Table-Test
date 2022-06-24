@@ -5,25 +5,16 @@ import styles from "./Table.module.scss";
 
 interface TablePropsInterface {
   data: DataInterface[];
+  sort: () => void;
 }
 
-const Table: FC<TablePropsInterface> = ({ data }) => {
+const Table: FC<TablePropsInterface> = ({ data, sort }) => {
   const TableStyles = filterStyles([styles.table]);
-  const [items, setItems] = useState<DataInterface[]>();
-
-  useEffect(() => {
-    setItems(data);
-  }, []);
-
-  const sortByNumber = () => {
-    const dataByNumber = data.sort((a, b) => a.number - b.number);
-    setItems(dataByNumber);
-  };
 
   return (
     <div className={TableStyles}>
       <div className={styles.header}>
-        <div onClick={sortByNumber}>
+        <div onClick={sort}>
           <span>
             #
             <svg
@@ -55,64 +46,14 @@ const Table: FC<TablePropsInterface> = ({ data }) => {
         </div>
       </div>
       <div className={styles.footer}>
-        {items &&
-          items.map((item, index) => (
+        {data &&
+          data.map((item, index) => (
             <div key={index}>
               <span>{index + 1}</span>
               <span>{item.title}</span>
               <span>{item.number}</span>
             </div>
           ))}
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </div>
     </div>
   );

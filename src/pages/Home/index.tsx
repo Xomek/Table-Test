@@ -9,6 +9,7 @@ const Home: FC = () => {
   return (
     <div>
       <Card card={card[0].items[0].items[0]} />
+      <Card card={card[1].items[1].items[1]} />
     </div>
   );
 };

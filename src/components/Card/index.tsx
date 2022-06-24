@@ -1,10 +1,11 @@
-import { FC, HTMLAttributes, useState } from "react";
+import { FC, HTMLAttributes, useEffect, useState } from "react";
 import { filterStyles } from "../../helpers/filterStyles";
 import moment from "moment";
 import { CardInterface } from "../../interfaces/card.interface";
 import styles from "./Card.module.scss";
 import Table from "./Table";
 import { CSSTransition } from "react-transition-group";
+import { DataInterface } from "../../interfaces/data.interface";
 
 interface CardPropsInterface extends HTMLAttributes<HTMLDivElement> {
   card: CardInterface;
@@ -12,12 +13,32 @@ interface CardPropsInterface extends HTMLAttributes<HTMLDivElement> {
 
 const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
   const CardStyles = filterStyles([className, styles.card]);
-  const [visible, setVisible] = useState<boolean>(false);
 
   const { title, subTitle, dateStart, dateEnd, data } = card;
   const date = {
     start: moment(dateStart).format("MM.DD.YYYY"),
     end: moment(dateEnd).format("MM.DD.YYYY"),
+  };
+
+  const [items, setItems] = useState<DataInterface[]>([]);
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    setItems(data);
+  }, []);
+
+  useEffect(() => {
+    const arr = [...data];
+    for (let i = 0; arr.length !== 12; i++) {
+      arr.push({ title: "", number: null });
+    }
+
+    setItems(arr);
+  }, [items]);
+
+  const sortByNumber = () => {
+    const dataByNumber = data.sort((a, b) => a.number! - b.number!); // Не хорошо
+    setItems(dataByNumber);
   };
 
   return (
@@ -37,7 +58,7 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
         classNames={{ enterDone: styles.show, exitActive: styles.hide }}
         unmountOnExit
       >
-        <Table data={data} />
+        <Table data={items} sort={sortByNumber} />
       </CSSTransition>
     </div>
   );
