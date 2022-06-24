@@ -27,14 +27,14 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
     setItems(data);
   }, []);
 
-  useEffect(() => {
-    const arr = [...data];
-    for (let i = 0; arr.length !== 12; i++) {
-      arr.push({ title: "", number: null });
-    }
+  // useEffect(() => {
+  //   const arr = [...data];
+  //   for (let i = 0; arr.length !== 12; i++) {
+  //     arr.push({ title: "", number: null });
+  //   }
 
-    setItems(arr);
-  }, [items]);
+  //   setItems(arr);
+  // }, [items]);
 
   const sortByNumber = () => {
     const dataByNumber = data.sort((a, b) => a.number! - b.number!); // Не хорошо
