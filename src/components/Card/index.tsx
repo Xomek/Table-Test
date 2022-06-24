@@ -22,22 +22,25 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
 
   const [items, setItems] = useState<DataInterface[]>([]);
   const [visible, setVisible] = useState<boolean>(false);
+  const [isSort, setIsSort] = useState<boolean>(false);
 
   useEffect(() => {
     setItems(data);
   }, []);
 
-  // useEffect(() => {
-  //   const arr = [...data];
-  //   for (let i = 0; arr.length !== 12; i++) {
-  //     arr.push({ title: "", number: null });
-  //   }
+  useEffect(() => {
+    const arr = [...data];
+    for (let i = 0; arr.length !== 12; i++) {
+      arr.push({ title: "", number: null });
+    }
 
-  //   setItems(arr);
-  // }, [items]);
+    setItems(arr);
+    setIsSort(false);
+  }, [isSort]);
 
   const sortByNumber = () => {
     const dataByNumber = data.sort((a, b) => a.number! - b.number!); // Не хорошо
+    setIsSort(true);
     setItems(dataByNumber);
   };
 
