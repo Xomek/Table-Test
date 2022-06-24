@@ -2,3 +2,14 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: $bgBody;
 }
+
+.container {
+  max-width: $containerWidth;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $containerPadding;
+}
+
+.page {
+  padding: 50px 0;
+}
