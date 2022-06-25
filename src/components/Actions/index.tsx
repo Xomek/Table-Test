@@ -1,8 +1,7 @@
-import React, {
+import {
   Dispatch,
   FC,
   HTMLAttributes,
-  ReactNode,
   SetStateAction,
   useEffect,
   useRef,
@@ -10,6 +9,7 @@ import React, {
 } from "react";
 import { filterStyles } from "../../helpers/filterStyles";
 import { ListInterface } from "../../interfaces/list.interface";
+import { CSSTransition } from "react-transition-group";
 import styles from "./Actions.module.scss";
 
 interface ActionsPropsInterface extends HTMLAttributes<HTMLDivElement> {
@@ -70,11 +70,19 @@ const Actions: FC<ActionsPropsInterface> = ({
 
   return (
     <div className={ActionsStyles} {...props} ref={actionsRef}>
-      {isShowClose ? (
-        <div className={styles.field + " " + styles.showCloseField}>
-          <button>
-            <img src="./assets/images/close.svg" alt="" />
-          </button>
+      <div className={styles.field}>
+        <button onClick={toggleClose}>
+          <img src="./assets/images/close.svg" alt="" />
+        </button>
+        <CSSTransition
+          in={isShowClose}
+          timeout={300}
+          classNames={{
+            enterActive: styles.showCloseField,
+            exitActive: styles.hideCloseField,
+          }}
+          unmountOnExit
+        >
           <select
             onChange={(e) => hideData(e.target.value)}
             value={selectValue}
@@ -84,29 +92,29 @@ const Actions: FC<ActionsPropsInterface> = ({
               <option key={index}>{option.title}</option>
             ))}
           </select>
-        </div>
-      ) : (
-        <button className={styles.btn} onClick={toggleClose}>
-          <img src="./assets/images/close.svg" alt="" />
-        </button>
-      )}
+        </CSSTransition>
+      </div>
 
-      {isShowSearch ? (
-        <div className={styles.field + " " + styles.showSearchField}>
+      <div className={styles.field}>
+        <CSSTransition
+          in={isShowSearch}
+          timeout={300}
+          classNames={{
+            enterActive: styles.showSearchField,
+            exitActive: styles.hideSearchField,
+          }}
+          unmountOnExit
+        >
           <input
             type="text"
             value={inputValue}
             onChange={(e) => searchData(e.target.value)}
           />
-          <button>
-            <img src="./assets/images/search.svg" alt="" />
-          </button>
-        </div>
-      ) : (
-        <button className={styles.btn} onClick={toggleSearch}>
+        </CSSTransition>
+        <button onClick={toggleSearch}>
           <img src="./assets/images/search.svg" alt="" />
         </button>
-      )}
+      </div>
     </div>
   );
 };
