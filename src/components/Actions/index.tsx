@@ -32,7 +32,7 @@ const Actions: FC<ActionsPropsInterface> = ({
 
   useEffect(() => {
     function hideActions(e: MouseEvent) {
-      // @ts-ignore плохо
+      // @ts-ignore Ну, а как по другому? :(
 
       if (!e.composedPath().includes(actionsRef.current)) {
         setIsShowSearch(false);

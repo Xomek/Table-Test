@@ -39,7 +39,7 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
   }, [isSort]);
 
   const sortByNumber = () => {
-    const dataByNumber = data.sort((a, b) => a.number! - b.number!); // Не хорошо
+    const dataByNumber = data.sort((a, b) => a.number! - b.number!);
     setIsSort(true);
     setItems(dataByNumber);
   };

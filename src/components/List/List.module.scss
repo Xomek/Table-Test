@@ -1,10 +1,6 @@
 @import "../../scss/palette.scss";
 
 .list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
   ul {
     padding-left: 30px;
   }
@@ -25,13 +21,21 @@
 
 .cardList {
   display: flex;
-  gap: 26px;
-  margin-bottom: 26px;
   flex-wrap: wrap;
-  height: 100%;
+  gap: 26px;
 }
 
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 300px;
+  width: 100%;
+}
 .subList {
+  position: relative;
+  padding-bottom: 30px;
+
   li {
     &::before {
       content: "";
@@ -44,16 +48,37 @@
       background-color: $darkGray;
     }
   }
-}
 
-.box {
-  width: 100%;
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    border-left: 2px solid $darkGray;
-    height: calc(100% - 131px);
+  &:not(:first-of-type):not(:last-of-type) {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0%;
+      border-left: 2px solid $darkGray;
+      height: 100%;
+    }
+  }
+
+  &:first-of-type {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: -20px;
+      border-left: 2px solid $darkGray;
+      height: calc(100% + 20px);
+    }
+  }
+
+  &:last-of-type {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: -20px;
+      border-left: 2px solid $darkGray;
+      height: 37.5px;
+    }
   }
 }

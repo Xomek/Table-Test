@@ -8,7 +8,7 @@
   border-radius: 2px;
   color: $darkBlue;
   overflow: hidden;
-  height: 100%;
+  align-self: start;
 }
 
 .header {
@@ -40,11 +40,11 @@
 }
 
 .show {
-  animation: open 0.1s ease-in forwards;
+  animation: open 0.1s ease-in-out forwards;
 }
 
 .hide {
-  animation: hide 0.1s ease-in forwards;
+  animation: hide 0.1s ease-in-out forwards;
 }
 
 @keyframes open {
