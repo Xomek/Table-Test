@@ -35,13 +35,19 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
     }
 
     setItems(arr);
-    setIsSort(false);
   }, [isSort]);
 
   const sortByNumber = () => {
-    const dataByNumber = data.sort((a, b) => a.number! - b.number!);
-    setIsSort(true);
-    setItems(dataByNumber);
+    let dataByNumber: DataInterface[] = [];
+    if (isSort) {
+      dataByNumber = data.sort((a, b) => a.number! - b.number!);
+      setIsSort((prevState) => !prevState);
+      setItems(dataByNumber);
+    } else {
+      dataByNumber = data.sort((a, b) => b.number! - a.number!);
+      setIsSort((prevState) => !prevState);
+      setItems(dataByNumber);
+    }
   };
 
   return (
