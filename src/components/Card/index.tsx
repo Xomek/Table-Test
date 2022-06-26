@@ -22,7 +22,8 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
 
   const [items, setItems] = useState<DataInterface[]>([]);
   const [visible, setVisible] = useState<boolean>(false);
-  const [isSort, setIsSort] = useState<boolean>(false);
+  const [isSortNumber, setIsSortNumber] = useState<boolean>(false);
+  const [isSortIndex, setIsSortIndex] = useState<boolean>(false);
 
   useEffect(() => {
     setItems(data);
@@ -35,19 +36,26 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
     }
 
     setItems(arr);
-  }, [isSort]);
+  }, [isSortNumber, isSortIndex]);
 
   const sortByNumber = () => {
     let dataByNumber: DataInterface[] = [];
-    if (isSort) {
-      dataByNumber = data.sort((a, b) => a.number! - b.number!);
-      setIsSort((prevState) => !prevState);
+    if (isSortNumber) {
+      dataByNumber = data.sort((a, b) => b.number! - a.number!);
+      setIsSortNumber((prevState) => !prevState);
       setItems(dataByNumber);
     } else {
-      dataByNumber = data.sort((a, b) => b.number! - a.number!);
-      setIsSort((prevState) => !prevState);
+      dataByNumber = data.sort((a, b) => a.number! - b.number!);
+      setIsSortNumber((prevState) => !prevState);
       setItems(dataByNumber);
     }
+  };
+
+  const sortByIndex = () => {
+    let dataByIndex: DataInterface[] = [];
+    dataByIndex = data.reverse();
+    setIsSortIndex((prevState) => !prevState);
+    setItems(dataByIndex);
   };
 
   return (
@@ -67,7 +75,11 @@ const Card: FC<CardPropsInterface> = ({ className, card, ...props }) => {
         classNames={{ enterDone: styles.show, exitActive: styles.hide }}
         unmountOnExit
       >
-        <Table data={items} sort={sortByNumber} />
+        <Table
+          data={items}
+          sortByNumber={sortByNumber}
+          sortByIndex={sortByIndex}
+        />
       </CSSTransition>
     </div>
   );

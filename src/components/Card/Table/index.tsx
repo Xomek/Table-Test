@@ -5,17 +5,22 @@ import styles from "./Table.module.scss";
 
 interface TablePropsInterface {
   data: DataInterface[];
-  sort: () => void;
+  sortByNumber: () => void;
+  sortByIndex: () => void;
 }
 
-const Table: FC<TablePropsInterface> = ({ data, sort }) => {
+const Table: FC<TablePropsInterface> = ({
+  data,
+  sortByNumber,
+  sortByIndex,
+}) => {
   const TableStyles = filterStyles([styles.table]);
 
   return (
     <div className={TableStyles}>
       <div className={styles.header}>
-        <div onClick={sort}>
-          <span>
+        <div>
+          <span onClick={sortByIndex}>
             #
             <svg
               version="1.1"
@@ -30,7 +35,7 @@ const Table: FC<TablePropsInterface> = ({ data, sort }) => {
           </span>
 
           <span>Title</span>
-          <span>
+          <span onClick={sortByNumber}>
             Number
             <svg
               version="1.1"
