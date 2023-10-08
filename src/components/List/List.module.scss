@@ -1,0 +1,83 @@
+@import "../../scss/palette.scss";
+
+.list {
+  ul {
+    padding-left: 30px;
+  }
+
+  li {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 8px 12px;
+    background-color: $blue;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    min-width: 70px;
+  }
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 300px;
+  width: 100%;
+}
+.subList {
+  position: relative;
+  padding-bottom: 30px;
+
+  li {
+    &::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 2px;
+      width: 20px;
+      background-color: $darkGray;
+    }
+  }
+
+  &:not(:first-of-type):not(:last-of-type) {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0%;
+      border-left: 2px solid $darkGray;
+      height: 100%;
+    }
+  }
+
+  &:first-of-type {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: -20px;
+      border-left: 2px solid $darkGray;
+      height: calc(100% + 20px);
+    }
+  }
+
+  &:last-of-type {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: -20px;
+      border-left: 2px solid $darkGray;
+      height: 37.5px;
+    }
+  }
+}

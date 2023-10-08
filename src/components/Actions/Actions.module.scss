@@ -1,0 +1,79 @@
+@import "../../scss/palette.scss";
+
+.actions {
+  input,
+  select,
+  button {
+    outline: none;
+    border: none;
+  }
+
+  button {
+    border-radius: 50px;
+    background-color: $gray;
+    width: 20px;
+    height: 36px;
+    cursor: pointer;
+  }
+
+  input,
+  select {
+    width: 107px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50px;
+  }
+
+  select {
+    color: $darkGray;
+  }
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  max-width: 150px;
+  padding: 0 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  &:not(:first-child) {
+    margin-left: 6px;
+  }
+  display: flex;
+  align-items: center;
+  background-color: $gray;
+  border-radius: 50px;
+}
+
+.showCloseField {
+  animation: show 0.3s ease-in-out forwards;
+}
+
+.showSearchField {
+  animation: show 0.3s ease-in-out forwards;
+}
+
+.hideCloseField {
+  animation: hide 0.2s ease-in-out forwards;
+}
+
+.hideSearchField {
+  animation: hide 0.2s ease-in-out forwards;
+}
+
+@keyframes show {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 107px;
+  }
+}
+
+@keyframes hide {
+  0% {
+    width: 107px;
+  }
+  100% {
+    width: 0px;
+  }
+}
